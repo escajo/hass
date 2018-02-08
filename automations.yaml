@@ -1,0 +1,62 @@
+### AUTOMATION ###
+# example 1 #
+- alias: caldera on
+  trigger:
+    platform: time
+    at: '17:00:00' 
+    #after: '18:33:00'
+    #before: '18:35:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.plug_caldera_switch
+
+- alias: caldera off
+  trigger:
+    platform: time
+    at: '9:00:00'
+    #after: '18:33:00'
+    #before: '18:35:00'
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.plug_caldera_switch
+
+- alias: Reis sol
+  trigger:
+    - platform: time
+      at: '09:30:00'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.stripe_sol
+        # rgb_color: [225,167,255]
+        # color_name: red #works
+        # effect: Police #works
+        effect: Fast Random Loop
+        # transition: 3
+        # brightness: 255
+        # kelvin: 2700
+
+  #condition:
+    # Prefix the first line of each condition configuration
+    # with a '-'' to enter multiple
+    #condition: time
+    #after: '15:00:00'
+    #before: '02:00:00'
+    #- condition: time
+    #  after: '22:41:00'
+    #  before: '22:41:30'
+
+    #weekday:
+    #  - mon
+    #  - tue
+    #  - wed
+    #  - thu
+    #  - fri
+
+  #action:
+  #    service: switch.turn_on
+  #    entity_id: switch.plug_caldera_switch
+      #service: switch.turn_off
+      #entity_id: switch.plug_caldera_switch
+
+
